@@ -47,6 +47,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.addEducation = this.addEducation.bind(this);
+    this.editEducation = this.editEducation.bind(this);
   }
 
   // Need to add verification
@@ -90,9 +91,22 @@ class App extends Component {
     const newObj = this.state.education;
     newObj[newIndex] = formData;
 
-    console.log(newObj);
     this.setState({
       education: newObj
+    });
+  }
+
+  editEducation(formData) {
+    const copyEducationObj = this.state.education;
+    copyEducationObj[formData.idx] = {
+      "name": formData.name,
+      "degree": formData.degree,
+      "startDate": formData.startDate,
+      "endDate": formData.endDate
+    }
+
+    this.setState({
+      education: copyEducationObj
     });
   }
 
@@ -124,7 +138,7 @@ class App extends Component {
             <input type="text" id="phoneNumber" name="phoneNumber" placeholder="123-232-1232" onChange={(e) => this.handleChange('phone-number', e)} value={inputPhoneNumber} />
             <button type="submit" id="btn-gen-info">Submit</button>
           </form>
-          <Education education={education} addEducation={this.addEducation} />
+          <Education education={education} addEducation={this.addEducation} editEducation={this.editEducation} />
         </main>
       </div>
     );

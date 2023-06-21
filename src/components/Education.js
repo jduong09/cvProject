@@ -9,6 +9,8 @@ class Education extends Component {
     school name, title of study, date of stud
     */
     this.state = {
+      formAction: 'ADD',
+      editIdx: '',
       inputUniversity: '',
       inputDegree: '',
       inputStartDate: '',
@@ -17,6 +19,24 @@ class Education extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setEditForm = this.setEditForm.bind(this);
+  }
+
+  // Event Listener for onClick method
+  // Sends name of education be edited.
+  setEditForm(idx, e) {
+    e.preventDefault();
+    const educationObj = this.props.education[idx + 1];
+    console.log(educationObj);
+
+    this.setState({
+      formAction: 'EDIT',
+      editIdx: idx + 1,
+      inputUniversity: educationObj.name,
+      inputDegree: educationObj.degree,
+      inputStartDate: educationObj.startDate,
+      inputEndDate: educationObj.endDate
+    });
   }
 
   handleChange(input, e) {
@@ -43,19 +63,28 @@ class Education extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { addEducation, editEducation } = this.props;
+    const { formAction, editIdx, inputUniversity, inputDegree, inputStartDate, inputEndDate } = this.state;
     /* if formAction is edit then we want to edit a form
     if formAction is add, then we want to add a education.
     */
    const formData = {
-    "name": this.state.inputUniversity,
-    "degree": this.state.inputDegree,
-    "startDate": this.state.inputStartDate,
-    "endDate": this.state.inputEndDate
+    "name": inputUniversity,
+    "degree": inputDegree,
+    "startDate": inputStartDate,
+    "endDate": inputEndDate
    }
 
-   this.props.addEducation(formData);
+   if (formAction === 'ADD') {
+    addEducation(formData);
+   } else {
+    formData['idx'] = editIdx;
+    editEducation(formData);
+   }
 
    this.setState({
+    formAction: 'ADD',
+    editIdx: '',
     inputUniversity: '',
     inputDegree: '',
     inputStartDate: '',
@@ -73,6 +102,7 @@ class Education extends Component {
           <h3>{item[1].name}</h3>
           <span>{item[1].degree}</span>
           <span>{item[1].startDate} - {item[1].EndDate}</span>
+          <button type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
         </li>
       )
     });
