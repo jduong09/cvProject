@@ -9,10 +9,6 @@ class Education extends Component {
     school name, title of study, date of stud
     */
     this.state = {
-      name: '',
-      degree: '',
-      startDate: '',
-      endDate: '',
       inputUniversity: '',
       inputDegree: '',
       inputStartDate: '',
@@ -20,6 +16,7 @@ class Education extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(input, e) {
@@ -43,6 +40,28 @@ class Education extends Component {
       });
     }
   }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    /* if formAction is edit then we want to edit a form
+    if formAction is add, then we want to add a education.
+    */
+   const formData = {
+    "name": this.state.inputUniversity,
+    "degree": this.state.inputDegree,
+    "startDate": this.state.inputStartDate,
+    "endDate": this.state.inputEndDate
+   }
+
+   this.props.addEducation(formData);
+
+   this.setState({
+    inputUniversity: '',
+    inputDegree: '',
+    inputStartDate: '',
+    inputEndDate: ''
+   });
+  }
   
   render() {
     const { education } = this.props;
@@ -60,7 +79,7 @@ class Education extends Component {
     return (
       <div className="div-education">
         <ul id="list-education">{listOfEducation}</ul>
-        <EducationForm inputUniversity={inputUniversity} inputDegree={inputDegree} inputStartDate={inputStartDate} inputEndDate={inputEndDate} handleChange={this.handleChange} />
+        <EducationForm inputUniversity={inputUniversity} inputDegree={inputDegree} inputStartDate={inputStartDate} inputEndDate={inputEndDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
       </div>
     );
   }
