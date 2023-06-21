@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import Education from './Education';
+import Experience from './Experience';
 
 /*
-A section to add general information like name, email, phone number.
-A section to add your educational experience (school name, title of study, date of study)
+A section to add general information like name, email, phone number. (done)
+A section to add your educational experience (school name, title of study, date of study) (done)
 A section to add practical experience (company name, position title, main tasks of your jobs, date from and until when you worked for that company)
 */
 
@@ -39,7 +40,16 @@ class App extends Component {
           "endDate": null
         }
       },
-      experience: {},
+      experience: {
+        "1": {
+          "name": "Google",
+          "title": "FrontEnd Developer",
+          "location": "Los Angeles, CA",
+          "startDate": "2019-09-09",
+          "endDate": null,
+          "achievements": []
+        }
+      },
       skill: {}
     }
 
@@ -48,6 +58,8 @@ class App extends Component {
     this.toggleEdit = this.toggleEdit.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.editEducation = this.editEducation.bind(this);
+    this.addNewExperience = this.addNewExperience.bind(this);
+    this.editExperience = this.editExperience.bind(this);
   }
 
   // Need to add verification
@@ -110,8 +122,34 @@ class App extends Component {
     });
   }
 
+  addNewExperience(formData) {
+    const lengthExperienceObj = Object.keys(this.state.experience).length;
+    const newExperienceObj = this.state.experience;
+    newExperienceObj[lengthExperienceObj + 1] = formData;
+
+    this.setState({
+      experience: newExperienceObj
+    });
+  }
+
+  editExperience(formData) {
+    const copyExperienceObj = this.state.experience;
+    copyExperienceObj[formData.idx] = {
+      "name": formData.name,
+      "title": formData.title,
+      "location": formData.location,
+      "startDate": formData.startDate,
+      "endDate": formData.endDate,
+      "achievements": formData.achievements
+    }
+
+    this.setState({
+      experience: copyExperienceObj
+    });
+  }
+ 
   render() {
-    const { name, email, phoneNumber, inputName, inputEmail, inputPhoneNumber, editMode, education } = this.state;
+    const { name, email, phoneNumber, inputName, inputEmail, inputPhoneNumber, editMode, education, experience } = this.state;
     return (
       <div id="app">
         <header>
@@ -139,6 +177,7 @@ class App extends Component {
             <button type="submit" id="btn-gen-info">Submit</button>
           </form>
           <Education education={education} addEducation={this.addEducation} editEducation={this.editEducation} />
+          <Experience experience={experience} addNewExperience={this.addNewExperience} editExperience={this.editExperience} />
         </main>
       </div>
     );

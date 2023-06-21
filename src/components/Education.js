@@ -27,7 +27,6 @@ class Education extends Component {
   setEditForm(idx, e) {
     e.preventDefault();
     const educationObj = this.props.education[idx + 1];
-    console.log(educationObj);
 
     this.setState({
       formAction: 'EDIT',
@@ -35,7 +34,7 @@ class Education extends Component {
       inputUniversity: educationObj.name,
       inputDegree: educationObj.degree,
       inputStartDate: educationObj.startDate,
-      inputEndDate: educationObj.endDate
+      inputEndDate: educationObj.endDate || ''
     });
   }
 
@@ -94,22 +93,23 @@ class Education extends Component {
   
   render() {
     const { education } = this.props;
-    const { inputUniversity, inputDegree, inputStartDate, inputEndDate } = this.state;
+    const { formAction, inputUniversity, inputDegree, inputStartDate, inputEndDate } = this.state;
 
     const listOfEducation = Object.entries(education).map((item,idx) => {
       return (
         <li className='list-item-education' key={idx}>
           <h3>{item[1].name}</h3>
           <span>{item[1].degree}</span>
-          <span>{item[1].startDate} - {item[1].EndDate}</span>
+          <span>{item[1].startDate} - {item[1].endDate}</span>
           <button type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
         </li>
       )
     });
     return (
       <div className="div-education">
+        <h2>Education</h2>
         <ul id="list-education">{listOfEducation}</ul>
-        <EducationForm inputUniversity={inputUniversity} inputDegree={inputDegree} inputStartDate={inputStartDate} inputEndDate={inputEndDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+        <EducationForm formAction={formAction} inputUniversity={inputUniversity} inputDegree={inputDegree} inputStartDate={inputStartDate} inputEndDate={inputEndDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
       </div>
     );
   }
