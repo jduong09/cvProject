@@ -47,7 +47,7 @@ class App extends Component {
           "location": "Los Angeles, CA",
           "startDate": "2019-09-09",
           "endDate": null,
-          "achievements": []
+          "achievements": ['Run', 'walk']
         }
       },
       skill: {}

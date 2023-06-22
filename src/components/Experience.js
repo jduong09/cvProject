@@ -21,6 +21,7 @@ class Experience extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addAchievement = this.addAchievement.bind(this);
     this.setEditForm = this.setEditForm.bind(this);
+    this.handleAchievement = this.handleAchievement.bind(this);
   }
   /*
   "1": {
@@ -102,10 +103,7 @@ class Experience extends Component {
 
   setEditForm(idx, e) {
     e.preventDefault();
-
     const experienceObj = this.props.experience[idx + 1];
-    console.log(experienceObj);
-
     this.setState({
       formAction: 'EDIT',
       editIdx: idx + 1,
@@ -113,12 +111,23 @@ class Experience extends Component {
       inputTitle: experienceObj.title,
       inputLocation: experienceObj.location,
       inputStartDate: experienceObj.startDate,
-      inputEndDate: experienceObj.endDate || ''
+      inputEndDate: experienceObj.endDate || '',
+      arrAchievements: experienceObj.achievements
+    });
+  }
+
+  handleAchievement(idx, e) {
+    e.preventDefault();
+    const newAchievements = this.state.arrAchievements;
+    newAchievements.splice(idx, 1, e.currentTarget.value);
+
+    this.setState({
+      arrAchievements: newAchievements
     });
   }
 
   render() {
-    const { inputName, inputTitle, inputDegree, inputLocation, inputStartDate, inputEndDate, inputAchievement, arrAchievements } = this.state;
+    const { formAction, inputName, inputTitle, inputDegree, inputLocation, inputStartDate, inputEndDate, inputAchievement, arrAchievements } = this.state;
     const listOfExperience = Object.entries(this.props.experience).map((item, idx) => {
       const listOfAchievements = item[1].achievements.map((achievement, idx) => {
         return <li key={idx}>{achievement}</li>
@@ -142,7 +151,8 @@ class Experience extends Component {
         <ul id="list-experience">
           {listOfExperience}
         </ul>
-        <ExperienceForm 
+        <ExperienceForm
+          formAction={formAction}
           inputName={inputName}
           inputTitle={inputTitle}
           inputDegree={inputDegree}
@@ -154,6 +164,7 @@ class Experience extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           addAchievement={this.addAchievement}
+          handleAchievement={this.handleAchievement}
         />
       </div>
     )
