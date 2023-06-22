@@ -153,7 +153,7 @@ class App extends Component {
     return (
       <div id="app">
         <header>
-          <div>
+          <div className='div-gen-info'>
             <h1 id="resume-name">{name}</h1>
             <div>
               <ul className='list-gen-info'>

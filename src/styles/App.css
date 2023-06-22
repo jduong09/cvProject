@@ -2,3 +2,79 @@
   display: none !important;
 }
 
+h1, h2, h3, h4 {
+  font-weight: 700;
+}
+
+header {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.div-gen-info {
+}
+
+.list-gen-info {
+  display: flex;
+  align-items: center;
+}
+
+.list-gen-info > li {
+  margin: 0 1rem;
+}
+
+#btn-edit-resume {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+#form-gen-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  padding: 1.5rem 0.75rem;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+#form-gen-info > label {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+#form-gen-info > input {
+  margin-bottom: 1rem;
+  padding: .75rem .5rem;
+  border-radius: 4px;
+}
+
+#btn-gen-info {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin: 0;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-color: pink;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#btn-gen-info:hover {
+  border-color: pink;
+  background-color: #FFFFFF;
+}
