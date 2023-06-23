@@ -19,7 +19,7 @@ const ExperienceForm = ({ formAction, inputName, inputTitle, inputLocation, inpu
     });
   }
   return (
-    <form id="form-education" onSubmit={handleSubmit}>
+    <form id="form-experience" onSubmit={handleSubmit}>
       <h3>{formAction === 'EDIT' ? 'Edit Experience' : 'Add New Experience'}</h3>
       <label htmlFor='experience-name'>Company/Job Name:</label>
       <input type="text" id="experience-name" name="experience-name" onChange={(e) => handleChange('name', e)} value={inputName} />

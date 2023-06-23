@@ -140,7 +140,7 @@ class Experience extends Component {
             <span>{item[1].location}</span>
             <span>{item[1].startDate} - {item[1].endDate}</span>
             <ul>{listOfAchievements}</ul>
-            <button type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
+            <button className="btn-edit-experience" type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
           </li>
       )
     });

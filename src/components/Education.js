@@ -98,9 +98,11 @@ class Education extends Component {
     const listOfEducation = Object.entries(education).map((item,idx) => {
       return (
         <li className='list-item-education' key={idx}>
-          <h3>{item[1].name}</h3>
+          <div>
+            <h2>{item[1].name}</h2>
+            <span>{item[1].startDate} - {item[1].endDate}</span>
+          </div>
           <span>{item[1].degree}</span>
-          <span>{item[1].startDate} - {item[1].endDate}</span>
           <button type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
         </li>
       )

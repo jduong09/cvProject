@@ -18,9 +18,6 @@ h1 {
   font-size: 2rem;
 }
 
-.div-gen-info {
-}
-
 .list-gen-info {
   display: flex;
   align-items: center;
@@ -36,7 +33,11 @@ h1 {
   right: 1rem;
 }
 
-#form-gen-info {
+main {
+  padding: 1rem;
+}
+
+#form-gen-info, #form-education, #form-experience {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -46,18 +47,18 @@ h1 {
   border-radius: 4px;
 }
 
-#form-gen-info > label {
+#form-gen-info > label, #form-education > label, #form-experience > label {
   font-size: 1.15rem;
   font-weight: 500;
 }
 
-#form-gen-info > input {
+#form-gen-info > input, #form-education > input, #form-experience > input {
   margin-bottom: 1rem;
   padding: .75rem .5rem;
   border-radius: 4px;
 }
 
-#btn-gen-info {
+#btn-gen-info, #btn-education-form {
   display: inline-block;
   padding: 1rem 2rem;
   margin: 0;
@@ -77,4 +78,53 @@ h1 {
 #btn-gen-info:hover {
   border-color: pink;
   background-color: #FFFFFF;
+}
+
+.div-education > h2, #form-education > h2, #div-experience > h2, #form-experience > h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.list-item-education {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.list-item-education > div {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 100%;
+}
+
+.list-item-education > span {
+  display: block;
+  flex: 1 100%;
+}
+
+.list-item-education > button, .btn-edit-experience {
+  display: block;
+  margin: 0 0 0 auto;
+  padding: .25rem 1rem;
+  background-color: pink;
+  border-radius: .5rem;
+}
+
+.list-item-experience {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.list-item-experience > h3, .list-item-experience > span:nth-of-type(2) {
+  flex: 2 50%;
+  margin-bottom: 1rem;
+}
+
+.list-item-experience > span:nth-of-type(1), .list-item-experience > span:nth-of-type(3) {
+  margin-bottom: 1rem;
+}
+
+.list-item-experience > ul {
+  flex: 1 100%;
 }
