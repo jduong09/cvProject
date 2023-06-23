@@ -9,6 +9,7 @@ class Education extends Component {
     school name, title of study, date of stud
     */
     this.state = {
+      formHidden: true,
       formAction: 'ADD',
       editIdx: '',
       inputUniversity: '',
@@ -20,6 +21,8 @@ class Education extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setEditForm = this.setEditForm.bind(this);
+    this.setAddForm = this.setAddForm.bind(this);
+    this.hideForm = this.hideForm.bind(this);
   }
 
   // Event Listener for onClick method
@@ -29,6 +32,7 @@ class Education extends Component {
     const educationObj = this.props.education[idx + 1];
 
     this.setState({
+      formHidden: false,
       formAction: 'EDIT',
       editIdx: idx + 1,
       inputUniversity: educationObj.name,
@@ -58,6 +62,25 @@ class Education extends Component {
         inputEndDate: e.currentTarget.value
       });
     }
+  }
+
+  setAddForm(e) {
+    e.preventDefault();
+    this.setState({
+      formHidden: false,
+      formAction: 'ADD',
+      inputUniversity: '',
+      inputDegree: '',
+      inputStartDate: '',
+      inputEndDate: ''
+    });
+  }
+
+  hideForm(e) {
+    e.preventDefault();
+    this.setState({
+      formHidden: true
+    });
   }
 
   handleSubmit(e) {
@@ -93,7 +116,7 @@ class Education extends Component {
   
   render() {
     const { education } = this.props;
-    const { formAction, inputUniversity, inputDegree, inputStartDate, inputEndDate } = this.state;
+    const { formHidden, formAction, inputUniversity, inputDegree, inputStartDate, inputEndDate } = this.state;
 
     const listOfEducation = Object.entries(education).map((item,idx) => {
       return (
@@ -111,7 +134,8 @@ class Education extends Component {
       <div className="div-education">
         <h2>Education</h2>
         <ul id="list-education">{listOfEducation}</ul>
-        <EducationForm formAction={formAction} inputUniversity={inputUniversity} inputDegree={inputDegree} inputStartDate={inputStartDate} inputEndDate={inputEndDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+        <button id="btn-add-education" className="btn-add" onClick={this.setAddForm}>Add Education</button>
+        <EducationForm formHidden={formHidden} formAction={formAction} inputUniversity={inputUniversity} inputDegree={inputDegree} inputStartDate={inputStartDate} inputEndDate={inputEndDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit} hideForm={this.hideForm} />
       </div>
     );
   }

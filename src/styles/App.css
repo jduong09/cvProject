@@ -1,3 +1,7 @@
+body {
+  font-family: sans-serif;
+}
+
 .hide {
   display: none !important;
 }
@@ -37,7 +41,7 @@ main {
   padding: 1rem;
 }
 
-#div-form-gen-info {
+.div-form {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -97,8 +101,13 @@ form {
 }
 
 .div-education > h2, #form-education > h2, #div-experience > h2, #form-experience > h2 {
+  text-align: center;
   font-size: 1.75rem;
   margin-bottom: 1rem;
+}
+
+#div-form-gen, .div-education, #div-experience {
+  margin-bottom: 3rem;
 }
 
 .list-item-education {
@@ -123,7 +132,16 @@ form {
   margin: 0 0 0 auto;
   padding: .25rem 1rem;
   background-color: pink;
-  border-radius: .5rem;
+  border-radius: 4px;
+}
+
+.btn-add {
+  display: block;
+  width: fit-content;
+  margin: 1rem auto;
+  padding: .5rem 1rem;
+  border: 2px solid black;
+  font-weight: 500;
 }
 
 .list-item-experience {
@@ -132,13 +150,37 @@ form {
   justify-content: space-between;
 }
 
-.list-item-experience > h3, .list-item-experience > span:nth-of-type(2) {
+.list-item-experience > h3, .list-item-experience > span:nth-of-type(1) {
   flex: 2 50%;
   margin-bottom: 1rem;
 }
 
-.list-item-experience > span:nth-of-type(1), .list-item-experience > span:nth-of-type(3) {
+.list-item-experience > span:nth-of-type(2), .list-item-experience > span:nth-of-type(3) {
   margin-bottom: 1rem;
+}
+
+.list-item-experience > h3 {
+  order: 1;
+}
+
+.list-item-experience > span:nth-of-type(1) {
+  order: 3;
+}
+
+.list-item-experience > span:nth-of-type(2) {
+  order: 2;
+}
+
+.list-item-experience > span:nth-of-type(3) {
+  order: 4;
+}
+
+.list-item-experience > ul {
+  order: 5;
+}
+
+.list-item-experience > button {
+  order: 6;
 }
 
 .list-item-experience > ul {

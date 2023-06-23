@@ -3,17 +3,6 @@ import '../styles/App.css';
 import Education from './Education';
 import Experience from './Experience';
 
-/*
-A section to add general information like name, email, phone number. (done)
-A section to add your educational experience (school name, title of study, date of study) (done)
-A section to add practical experience (company name, position title, main tasks of your jobs, date from and until when you worked for that company)
-*/
-
-/*
-Be sure to include an edit and submit button for each section or for the whole CV,
-your preference. The submit button should submit your form and display the value of your input fields in HTML elements. The edit button should add back (display) the input fields, with the previously displayed information as values. In those input fields, you should be able to edit and resubmit the content. You’re going to make heavy use of state and props, so make sure you understood those concepts.
-*/
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -178,7 +167,7 @@ class App extends Component {
           </button>
         </header>
         <main>
-          <div id="div-form-gen-info" className={editMode ? "" : "hide"}>
+          <div id="div-form-gen" className={`div-form ${editMode ? "" : "hide"}`}>
             <div className="form-header">
               <h2>Edit Info</h2>
               <button id="btn-close-gen" className="btn-close" onClick={this.hideEdit}>X</button>

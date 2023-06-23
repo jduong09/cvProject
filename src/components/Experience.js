@@ -6,6 +6,7 @@ class Experience extends Component {
     super(props);
 
     this.state = {
+      formHidden: true,
       formAction: 'ADD',
       editIdx: '',
       inputName: '',
@@ -22,19 +23,10 @@ class Experience extends Component {
     this.addAchievement = this.addAchievement.bind(this);
     this.setEditForm = this.setEditForm.bind(this);
     this.handleAchievement = this.handleAchievement.bind(this);
-  }
-  /*
-  "1": {
-    "name": "Google",
-    "title": "FrontEnd Developer",
-    "location": "Los Angeles, CA",
-    "startDate": "2019-09-09",
-    "endDate": null,
-    "achivements": []
+    this.setAddForm = this.setAddForm.bind(this);
+    this.hideForm = this.hideForm.bind(this);
   }
 
-  <button type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
-  */
   handleChange(inputName, e) {
     e.preventDefault();
 
@@ -105,6 +97,7 @@ class Experience extends Component {
     e.preventDefault();
     const experienceObj = this.props.experience[idx + 1];
     this.setState({
+      formHidden: false,
       formAction: 'EDIT',
       editIdx: idx + 1,
       inputName: experienceObj.name,
@@ -126,8 +119,29 @@ class Experience extends Component {
     });
   }
 
+  setAddForm(e) {
+    e.preventDefault();
+    this.setState({
+      formHidden: false,
+      formAction: 'ADD',
+      inputName: '',
+      inputTitle: '',
+      inputLocation: '',
+      inputStartDate: '',
+      inputEndDate: '',
+      arrAchievements: []
+    });
+  }
+
+  hideForm(e) {
+    e.preventDefault();
+    this.setState({
+      formHidden: true
+    });
+  }
+
   render() {
-    const { formAction, inputName, inputTitle, inputDegree, inputLocation, inputStartDate, inputEndDate, inputAchievement, arrAchievements } = this.state;
+    const { formHidden, formAction, inputName, inputTitle, inputDegree, inputLocation, inputStartDate, inputEndDate, inputAchievement, arrAchievements } = this.state;
     const listOfExperience = Object.entries(this.props.experience).map((item, idx) => {
       const listOfAchievements = item[1].achievements.map((achievement, idx) => {
         return <li key={idx}>{achievement}</li>
@@ -135,13 +149,13 @@ class Experience extends Component {
 
       return (
         <li className='list-item-experience' key={idx}>
-            <h3>{item[1].name}</h3>
-            <span>{item[1].title}</span>
-            <span>{item[1].location}</span>
-            <span>{item[1].startDate} - {item[1].endDate}</span>
-            <ul>{listOfAchievements}</ul>
-            <button className="btn-edit-experience" type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
-          </li>
+          <h3>{item[1].name}</h3>
+          <span>{item[1].title}</span>
+          <span>{item[1].location}</span>
+          <span>{item[1].startDate} - {item[1].endDate}</span>
+          <ul>{listOfAchievements}</ul>
+          <button className="btn-edit-experience" type="button" onClick={(e) => this.setEditForm(idx, e)}>Edit</button>
+        </li>
       )
     });
 
@@ -151,7 +165,9 @@ class Experience extends Component {
         <ul id="list-experience">
           {listOfExperience}
         </ul>
+        <button id="btn-add-experience" className="btn-add" onClick={this.setAddForm}>Add Education</button>
         <ExperienceForm
+          formHidden={formHidden}
           formAction={formAction}
           inputName={inputName}
           inputTitle={inputTitle}
@@ -165,6 +181,7 @@ class Experience extends Component {
           handleSubmit={this.handleSubmit}
           addAchievement={this.addAchievement}
           handleAchievement={this.handleAchievement}
+          hideForm={this.hideForm}
         />
       </div>
     )
