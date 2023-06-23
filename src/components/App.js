@@ -56,6 +56,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.hideEdit = this.hideEdit.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.editEducation = this.editEducation.bind(this);
     this.addNewExperience = this.addNewExperience.bind(this);
@@ -87,14 +88,24 @@ class App extends Component {
     this.setState({
       name: inputName,
       email: inputEmail,
-      phoneNumber: inputPhoneNumber
+      phoneNumber: inputPhoneNumber,
+      inputName: '',
+      inputEmail: '',
+      inputPhoneNumber: ''
     });
   }
 
   toggleEdit(e) {
     e.preventDefault();
     this.setState({
-      editMode: !this.state.editMode
+      editMode: true
+    });
+  }
+
+  hideEdit(e) {
+    e.preventDefault();
+    this.setState({
+      editMode: false
     });
   }
 
@@ -167,15 +178,21 @@ class App extends Component {
           </button>
         </header>
         <main>
-          <form id="form-gen-info" className={editMode ? "" : "hide"} onSubmit={this.handleSubmit}>
-            <label htmlFor='name'>Name:</label>
-            <input type="text" id="name" name="name" placeholder="Justin Duong" onChange={(e) => this.handleChange('name', e)} value={inputName} />
-            <label htmlFor='email'>Email:</label>
-            <input type="email" id="email" name="email" placeholder="sld@gmail.com" onChange={(e) => this.handleChange('email', e)} value={inputEmail} />
-            <label htmlFor='phoneNumber'>Phone Number:</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="123-232-1232" onChange={(e) => this.handleChange('phone-number', e)} value={inputPhoneNumber} />
-            <button type="submit" id="btn-gen-info">Submit</button>
-          </form>
+          <div id="div-form-gen-info" className={editMode ? "" : "hide"}>
+            <div className="form-header">
+              <h2>Edit Info</h2>
+              <button id="btn-close-gen" className="btn-close" onClick={this.hideEdit}>X</button>
+            </div>
+            <form id="form-gen-info" onSubmit={this.handleSubmit}>
+              <label htmlFor='name'>Name:</label>
+              <input type="text" id="name" name="name" placeholder="Justin Duong" onChange={(e) => this.handleChange('name', e)} value={inputName} />
+              <label htmlFor='email'>Email:</label>
+              <input type="email" id="email" name="email" placeholder="sld@gmail.com" onChange={(e) => this.handleChange('email', e)} value={inputEmail} />
+              <label htmlFor='phoneNumber'>Phone Number:</label>
+              <input type="text" id="phoneNumber" name="phoneNumber" placeholder="123-232-1232" onChange={(e) => this.handleChange('phone-number', e)} value={inputPhoneNumber} />
+              <button type="submit" id="btn-gen-info">Submit</button>
+            </form>
+          </div>
           <Education education={education} addEducation={this.addEducation} editEducation={this.editEducation} />
           <Experience experience={experience} addNewExperience={this.addNewExperience} editExperience={this.editExperience} />
         </main>

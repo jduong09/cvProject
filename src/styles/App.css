@@ -37,7 +37,7 @@ main {
   padding: 1rem;
 }
 
-#form-gen-info, #form-education, #form-experience {
+#div-form-gen-info {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -45,6 +45,22 @@ main {
   padding: 1.5rem 0.75rem;
   border: 2px solid black;
   border-radius: 4px;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-header > h2 {
+  font-size: 1.75rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 #form-gen-info > label, #form-education > label, #form-experience > label {
