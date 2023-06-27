@@ -59,7 +59,7 @@ main {
 }
 
 .form-header > h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 form {
@@ -95,7 +95,7 @@ form {
   -moz-appearance: none;
 }
 
-#btn-gen-info:hover {
+#btn-gen-info:hover, #btn-education-form:hover, #btn-experience-submit:hover, #btn-achievement-submit:hover {
   border-color: pink;
   background-color: #FFFFFF;
 }
@@ -142,6 +142,10 @@ form {
   padding: .5rem 1rem;
   border: 2px solid black;
   font-weight: 500;
+}
+
+.btn-add:hover {
+  border-color: pink;
 }
 
 .list-item-experience {
@@ -204,4 +208,8 @@ form {
 #form-list-achievements > li {
   list-style-type: disc;
   margin: 0 0 .5rem 1rem;
+}
+
+button:hover {
+  cursor: pointer;
 }
