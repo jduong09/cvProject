@@ -105,6 +105,7 @@ class Education extends Component {
    }
 
    this.setState({
+    formHidden: true,
     formAction: 'ADD',
     editIdx: '',
     inputUniversity: '',

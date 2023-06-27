@@ -25,7 +25,6 @@ const ExperienceForm = ({ formHidden, formAction, inputName, inputTitle, inputLo
         <button id="btn-close-experience" className="btn-close" onClick={hideForm}>X</button>
       </div>
       <form id="form-experience" onSubmit={handleSubmit}>
-        <h3>{formAction === 'EDIT' ? 'Edit Experience' : 'Add New Experience'}</h3>
         <label htmlFor='experience-name'>Company/Job Name:</label>
         <input type="text" id="experience-name" name="experience-name" onChange={(e) => handleChange('name', e)} value={inputName} />
 
@@ -41,15 +40,17 @@ const ExperienceForm = ({ formHidden, formAction, inputName, inputTitle, inputLo
         <label htmlFor='experience-endDate'>End Date:</label>
         <input type="date" id="experience-endDate" name="experience-endDate" onChange={(e) => handleChange('endDate', e)} value={inputEndDate} />
 
-        {listAchievements}
-
-        <fieldset className={formAction === 'EDIT' ? 'hide' : ''}>
+        <fieldset id="fieldset-achievement" className={formAction === 'EDIT' ? 'hide' : ''}>
           <legend>Achievements</legend>
+          <ul id="form-list-achievements">
+            {listAchievements}
+          </ul>
+          <label htmlFor='experience-achievement'>New Achievement:</label>
           <input type="text" id="experience-achievement" name="experience-achievement" onChange={(e) => handleChange('achievement', e)} value={inputAchievement} />
-          <button type="button" onClick={addAchievement}>Add Achievement</button>
+          <button id="btn-achievement-submit" type="button" onClick={addAchievement}>Add Achievement</button>
         </fieldset>
         
-        <button type="submit">{formAction === 'EDIT' ? 'Edit' : 'Add'}</button>
+        <button id="btn-experience-submit" type="submit">{formAction === 'EDIT' ? 'Edit' : 'Add'}</button>
       </form>
     </div>
   )

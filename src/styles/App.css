@@ -72,13 +72,13 @@ form {
   font-weight: 500;
 }
 
-#form-gen-info > input, #form-education > input, #form-experience > input {
+#form-gen-info > input, #form-education > input, #form-experience > input, #experience-achievement {
   margin-bottom: 1rem;
   padding: .75rem .5rem;
   border-radius: 4px;
 }
 
-#btn-gen-info, #btn-education-form {
+#btn-gen-info, #btn-education-form, #btn-experience-submit, #btn-achievement-submit {
   display: inline-block;
   padding: 1rem 2rem;
   margin: 0;
@@ -129,6 +129,7 @@ form {
 
 .list-item-education > button, .btn-edit-experience {
   display: block;
+  width: fit-content;
   margin: 0 0 0 auto;
   padding: .25rem 1rem;
   background-color: pink;
@@ -137,7 +138,6 @@ form {
 
 .btn-add {
   display: block;
-  width: fit-content;
   margin: 1rem auto;
   padding: .5rem 1rem;
   border: 2px solid black;
@@ -185,4 +185,23 @@ form {
 
 .list-item-experience > ul {
   flex: 1 100%;
+}
+
+#fieldset-achievement {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid black;
+  margin-bottom: 1rem;
+}
+
+#fieldset-achievement > legend {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+#form-list-achievements > li {
+  list-style-type: disc;
+  margin: 0 0 .5rem 1rem;
 }

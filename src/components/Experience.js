@@ -78,6 +78,18 @@ class Experience extends Component {
       formData["idx"] = editIdx;
       editExperience(formData);
     }
+
+    this.setState({
+      formHidden: true,
+      formAction: 'ADD',
+      inputName: '',
+      inputTitle: '',
+      inputLocation: '',
+      inputStartDate: '',
+      inputEndDate: '',
+      inputAchievement: '',
+      arrAchievements: []
+    });
   }
 
   addAchievement(e) {
@@ -165,7 +177,7 @@ class Experience extends Component {
         <ul id="list-experience">
           {listOfExperience}
         </ul>
-        <button id="btn-add-experience" className="btn-add" onClick={this.setAddForm}>Add Education</button>
+        <button id="btn-add-experience" className="btn-add" onClick={this.setAddForm}>Add Experience</button>
         <ExperienceForm
           formHidden={formHidden}
           formAction={formAction}
