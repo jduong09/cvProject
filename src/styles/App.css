@@ -16,10 +16,12 @@ header {
   justify-content: center;
   position: relative;
   padding: 1rem;
+  background-color: pink;
 }
 
 h1 {
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .list-gen-info {
@@ -101,10 +103,14 @@ form {
 }
 
 .div-education > h2, #form-education > h2, #div-experience > h2, #form-experience > h2 {
-  text-align: center;
   font-size: 1.75rem;
   margin-bottom: 1rem;
 }
+
+#form-education > h2, #form-experience > h2 {
+  text-align: center;
+}
+
 
 #div-form-gen, .div-education, #div-experience {
   margin-bottom: 3rem;
@@ -213,3 +219,35 @@ form {
 button:hover {
   cursor: pointer;
 }
+
+
+@media (min-width: 375px) {
+  
+}
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 767px) {
+
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+  header, main {
+    padding: 4rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1400px) {
+
+}
+
