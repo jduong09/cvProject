@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cvProject/static/css/main.fbcceb17.css",
+    "main.js": "/cvProject/static/js/main.3140302f.js",
+    "static/js/787.34a20539.chunk.js": "/cvProject/static/js/787.34a20539.chunk.js",
+    "index.html": "/cvProject/index.html",
+    "main.fbcceb17.css.map": "/cvProject/static/css/main.fbcceb17.css.map",
+    "main.3140302f.js.map": "/cvProject/static/js/main.3140302f.js.map",
+    "787.34a20539.chunk.js.map": "/cvProject/static/js/787.34a20539.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fbcceb17.css",
+    "static/js/main.3140302f.js"
+  ]
+}
